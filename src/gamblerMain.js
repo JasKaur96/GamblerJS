@@ -1,12 +1,12 @@
-const betCheck = require('./stakeCheck');
-const betStake = new betCheck.StakeCheck();
+const betCheck = require('./gamble');
+const betStake = new betCheck.Gamble();
 let betCount =0;
-class Gambler{
+class GambleMain{
     print(){
-        betStake.bet();
+        betStake.gamble();
         return "";
     }
 }
 
-let gambler = new Gambler().print();
+let gambler = new GambleMain().print();
 console.log(gambler);
