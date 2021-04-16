@@ -9,10 +9,13 @@ class Gamble{
     constructor(){}
 
     gamble(){
-             
+       
+        for(let day = 1; day <= 5; day++){    
+            console.log("Day:"+day);      
             randomBet = Math.floor(Math.random() * 10 ) % 2;
-            victory.victoryCheck(randomBet);    
-        
+            victory.victoryCheck(randomBet,day);
+            
+        }
     }
     
 }

@@ -1,7 +1,7 @@
 const cashStore = require('./cashStore')
 const cashstore = new cashStore.CashStore();
 let betCount =0;
-let totalCash = 75;
+let totalCash = 100;
 let cash = totalCash;
 class Victory{
     victoryCheck(randomBet,day){
@@ -12,21 +12,24 @@ class Victory{
         betCount++
            
         while (result > totalCashLost && result < totalCashWin){
-            for(let day = 1; day <= 20; day++){
             if (randomBet == 1){
-                result = result + 30;              
+                result = result + 1;              
             }
             else{
-                result = result - 30;
+                result = result - 1;
             }
-            cashstore.cashStore(result,days);
+            cashstore.cashStore(days,result);
             console.log("Total Cash :"+ result);
         }
-    
         cashstore.cashPrint();
+        return [result,totalCashWin,totalCashLost];
     }
-    return [result,totalCashWin,totalCashLost];
-    }
+
+    // show(){
+    //     this.victoryCheck();
+    //     // console.log(empDailyWageMap)
+    //     return "\nTotal totalCashWins:"+totalCashWin+"\nTotaltotalCashLost :"+totalCashLost +"\nDay:"+day;
+    // }
 }
 
 module.exports = {Victory}
