@@ -19,7 +19,7 @@ class MapAmount{
     }
 
     mapDisplay(month){
-        console.log("Month : "+month);
+        console.log("\nMonth : "+month);
         console.log("Days and Winning Amount:")
         console.log(dayWinAmountMap);
         console.log("\nDays and Losing Amount:")

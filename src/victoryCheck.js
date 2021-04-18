@@ -3,44 +3,44 @@ const gamble = require('./gamble')
 const bet = new gamble.Gamble();
 const mapping = require('./mapAmntDay')
 const mapAmnt = new mapping.MapAmount();
-let totalCash = 100;
-let cash = totalCash;
-let totalCashWin = cash + ((50/cash) * 100);
-let totalCashLost = (50/cash) * 100;
-let result = cash;  
-let months = 0;
-class VictoryCheck  {
-    constructor() {} 
+const luckCheck  = require("./luckCheck");
+let check = new luckCheck.LuckCheck();
+let totalCash = 60;
+let luck=0, badLuck =0;
+class VictoryCheck {
+    constructor(months) {
+        this.months = months;
+    } 
      
-    victoryCheck(month){
-        // let totalCashWin = cash + ((50/cash) * 100);
-        // let totalCashLost = (50/cash) * 100;
-        // let result = cash;  
-        months =month;
-        while (result > totalCashLost && result < totalCashWin){
-            for(let day = 1; day <= 20; day++){ 
-              
+    victoryCheck(amount){
+        let cash = amount; 
+        let cash1 = cash; 
+        let totalCashWin = cash + ((50/cash) * 100);
+        let totalCashLost = (50/cash) * 100;
+       
+        while (cash > totalCashLost && cash < totalCashWin){
+            for(let day = 1; day <= 10; day++){ 
+               let betCount = 0;
                 let randomBet = Math.floor(Math.random() * 10 ) % 2;
+                betCount++;
                 if (randomBet == 1){
-                    result = result + 1;      
+                    cash = cash + 1;   
+                    luck++;   
                 }
                 else{
-                    result = result - 1;    
+                    badLuck++;
+                    cash = cash - 1;    
                 }
-                //  console.log("Total Cash :"+ result);  
-                mapAmnt.mapAmountDay(result,day,randomBet);
+                check.luckCheck(luck,badLuck,cash,day,randomBet);
+
+                mapAmnt.mapAmountDay(cash,day,randomBet);
             }
-        }
+        } 
+        cash1 = cash1 - cash;
+        mapAmnt.mapDisplay(this.months);
        
-        mapAmnt.mapDisplay(months);
-        // wonLostDisplay(result,totalCashLost)
-        // if(result > totalCashLost){
-        //     console.log("Won! cash :"+result);
-        // }
-        // else{
-        //     console.log("Lost! cash :"+result);
-        // }
-        return [result,totalCashWin,totalCashLost];
+        return [cash,totalCashWin,totalCashLost,luck,badLuck];
     }
+   
 }
 module.exports = {VictoryCheck};
