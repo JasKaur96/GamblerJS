@@ -1,12 +1,12 @@
-const betCheck = require('./stakeCheck');
-const betStake = new betCheck.StakeCheck();
-let betCount =0;
-class Gambler{
-    print(){
-        betStake.bet();
-        return "";
+const check = require('./victoryCheck')
+const victoryCheck = new check.VictoryCheck();
+
+let display = function(){
+    console.log( "****** Welcome to Gambler Game! ******");
+    for(let month=1; month<13; month++){  
+        console.log(victoryCheck.victoryCheck(month));
     }
 }
 
-let gambler = new Gambler().print();
-console.log(gambler);
+display();
+ 
