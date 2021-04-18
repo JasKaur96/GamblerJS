@@ -7,11 +7,11 @@ const victory = new victoryCheck.Victory();
 
 describe('Test Gambler simulation problem.', function(){
     it('Test bet for 1 and return 101 ',function(){
-        assert.equal(victory.victoryCheck(1),101); 
+        assert.equal(victory.victoryCheck(1),150); 
     })
 
     it('Test bet for 0 and return 99 ',function(){
-        assert.equal(victory.victoryCheck(0),100); 
+        assert.equal(victory.victoryCheck(0),50); 
     })
 })
 
