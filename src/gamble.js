@@ -1,19 +1,16 @@
-const betCheck = require('./victoryCheck');
-const victory = new betCheck.Victory();
-let randomBet = 0;
-let result =0;
-let totalCash = 100;
-let totalCashPer = totalCash;
-
-class Gamble{
-    constructor(){}
-
-    gamble(){
-        for(let day = 1; day <= 5; day++){    
-            console.log("Day:"+day);      
-            victory.victoryCheck();
-        }
+let result;
+class Gamble {
+    constructor() {}
+    gamble(randomBet){
+        
+        switch(randomBet){
+            case 1:
+                return result = result + 1;   
+            case 2:
+                return result = result - 1;
+        } 
+        return result;
     }
-}
+}   
+module.exports = {Gamble};
 
-module.exports = {Gamble}
